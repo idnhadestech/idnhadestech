@@ -65,6 +65,28 @@ body {
   margin: 8px 0;
 }
 
+.terms {
+  line-height: 1.7;
+}
+
+.terms h3 {
+  margin-top: 20px;
+  color: #6ea8ff;
+  font-size: 16px;
+}
+
+.terms ul {
+  padding-left: 20px;
+}
+
+.terms li {
+  margin: 6px 0;
+  color: #ccc;
+}
+
+.terms p {
+  color: #bbb;
+}
 /* CTA */
 .cta {
   display: flex;
