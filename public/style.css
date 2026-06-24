@@ -102,6 +102,36 @@ body {
   cursor: pointer;
 }
 
+.vision {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.vision-box, .mission-box {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(110,168,255,0.2);
+  padding: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.vision-box h3 {
+  color: #4da3ff;
+}
+
+.mission-box h3 {
+  color: #6ea8ff;
+}
+
+.mission-box ul {
+  padding-left: 20px;
+}
+
+.mission-box li {
+  margin: 10px 0;
+  color: #ccc;
+}
 /* EXPERIENCE */
 .experience {
   height: 60vh;
