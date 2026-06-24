@@ -102,11 +102,24 @@ revealElements.forEach((el) => {
 // ======================
 // LOADER CONTROL
 // ======================
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.getElementById("loader").classList.add("hide");
-  }, 1800);
+const loader = document.getElementById("loader");
+
+let loaded = false;
+
+// jika DOM ready
+document.addEventListener("DOMContentLoaded", () => {
+  loaded = true;
+  hideLoader();
 });
+
+// fallback max 1 detik
+setTimeout(() => {
+  if (!loaded) hideLoader();
+}, 1000);
+
+function hideLoader() {
+  loader.classList.add("hide");
+}
 
 // ======================
 // APPLE SCROLL CINEMATIC SYSTEM
