@@ -10,11 +10,9 @@ async function loadCompany() {
       <p><b>Location:</b> ${data.location}</p>
     `;
   } catch (err) {
-    console.log(err);
+    console.log("API error:", err);
   }
 }
-
-loadCompany();
 
 async function testAPI() {
   const res = await fetch("/api/company");
@@ -23,3 +21,5 @@ async function testAPI() {
   document.getElementById("api-result").textContent =
     JSON.stringify(data, null, 2);
 }
+
+loadCompany();
