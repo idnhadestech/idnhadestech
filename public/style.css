@@ -1,13 +1,8 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
-
 body {
-  background: #0b0f1a;
-  color: #fff;
+  margin: 0;
+  font-family: Arial;
+  background: #0b0f14;
+  color: white;
 }
 
 header {
@@ -15,100 +10,31 @@ header {
   justify-content: space-between;
   padding: 20px;
   background: #111827;
-  position: sticky;
-  top: 0;
-}
-
-.logo {
-  font-weight: bold;
 }
 
 nav a {
-  margin: 0 10px;
   color: #aaa;
+  margin-left: 10px;
   text-decoration: none;
 }
 
-nav a:hover {
-  color: #fff;
-}
-
-.menu-toggle {
-  display: none;
-  cursor: pointer;
-}
-
 .hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(#000, #0b0f1a);
   text-align: center;
-}
-
-.hero h1 {
-  font-size: 3rem;
-}
-
-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: #6366f1;
-  border: none;
-  color: white;
-  cursor: pointer;
+  padding: 80px 20px;
 }
 
 section {
-  padding: 60px 20px;
-  text-align: center;
+  padding: 40px;
 }
 
-.grid {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
+button {
+  padding: 10px 15px;
+  background: #22c55e;
+  border: none;
+  cursor: pointer;
 }
 
-.card {
-  background: #1f2937;
-  padding: 20px;
-  border-radius: 10px;
-  width: 250px;
-}
-
-.terms-box {
-  text-align: left;
-  max-width: 800px;
-  margin: auto;
-  line-height: 1.6;
-}
-
-footer {
-  background: #111827;
-  padding: 20px;
-  text-align: center;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  nav {
-    display: none;
-    flex-direction: column;
-  }
-
-  nav.active {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
+pre {
+  background: #111;
+  padding: 10px;
 }
