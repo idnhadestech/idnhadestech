@@ -98,3 +98,73 @@ revealElements.forEach((el) => {
   el.classList.add("reveal");
   observer.observe(el);
 });
+
+// ======================
+// LOADER CONTROL
+// ======================
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("loader").classList.add("hide");
+  }, 1800);
+});
+
+// ======================
+// APPLE SCROLL CINEMATIC SYSTEM
+// ======================
+
+// smooth scroll depth tracking
+let scrollYPos = 0;
+
+window.addEventListener("scroll", () => {
+  scrollYPos = window.scrollY;
+
+  // 3D camera depth shift (Apple feel)
+  camera.position.z = 5 + scrollYPos * 0.002;
+
+  // background slow parallax
+  points.rotation.y += 0.0002;
+});
+
+// ======================
+// BLUR → SHARP SCROLL EFFECT
+// ======================
+const sections = document.querySelectorAll(".card, .hero, .experience");
+
+const blurObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.style.filter = "blur(0px)";
+        entry.target.style.transform = "translateY(0px) scale(1)";
+        entry.target.style.opacity = "1";
+      } else {
+        entry.target.style.filter = "blur(6px)";
+        entry.target.style.transform = "translateY(20px) scale(0.98)";
+        entry.target.style.opacity = "0.6";
+      }
+    });
+  },
+  { threshold: 0.2 }
+);
+
+sections.forEach((el) => {
+  el.style.transition = "all 0.8s ease";
+  blurObserver.observe(el);
+});
+
+// ======================
+// SCROLL MOMENTUM FEEL (SMOOTH DRIFT)
+// ======================
+let targetY = 0;
+let currentY = 0;
+
+function smoothScroll() {
+  targetY = window.scrollY;
+  currentY += (targetY - currentY) * 0.08;
+
+  document.body.style.transform = `translateY(${-currentY * 0.02}px)`;
+
+  requestAnimationFrame(smoothScroll);
+}
+
+smoothScroll();
