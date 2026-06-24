@@ -10,18 +10,18 @@
 </head>
 <body>
 
-<!-- 3D BACKGROUND -->
 <canvas id="bg"></canvas>
 
-<!-- UI -->
 <div class="ui">
 
+  <!-- NAV -->
   <header class="nav">
     <div class="logo">HADES TECH</div>
     <nav>
-      <a href="#about">About</a>
+      <a href="#profile">Profile</a>
       <a href="#services">Services</a>
-      <a href="#vision">Vision</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#values">Values</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -33,43 +33,81 @@
     <p>Digital Automation • PPOB • Software Engineering</p>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="card">
-    <h2>About Company</h2>
-    <p id="company">Loading data...</p>
+  <!-- PROFILE -->
+  <section id="profile" class="card">
+    <h2>📋 Profil Perusahaan</h2>
+    <p id="company">Loading...</p>
+  </section>
+
+  <!-- BACKGROUND -->
+  <section class="card">
+    <h2>🎓 Latar Belakang</h2>
+    <ul>
+      <li>SMK Negeri Bansari (Teknik Audio Video)</li>
+      <li>Lulus 2023 (Angkatan 13)</li>
+      <li>Belajar coding sejak 2020</li>
+      <li>Kolaborasi developer Internasional (2023)</li>
+    </ul>
   </section>
 
   <!-- SERVICES -->
-  <section id="services" class="grid">
-    <div class="card">WhatsApp Automation System</div>
-    <div class="card">PPOB Digital Payment</div>
-    <div class="card">Custom Software Development</div>
+  <section id="services" class="card">
+    <h2>🚀 Layanan</h2>
+    <ul>
+      <li>WhatsApp Automation System</li>
+      <li>PPOB & Payment System</li>
+      <li>Software Development</li>
+      <li>Custom Business System</li>
+    </ul>
   </section>
 
-  <!-- VISION -->
-  <section id="vision" class="card">
-    <h2>Vision</h2>
-    <p>
-      Menjadi penyedia solusi teknologi dan layanan digital terintegrasi
-      yang cepat, aman, dan inovatif di Indonesia.
-    </p>
+  <!-- TIMELINE -->
+  <section id="timeline" class="card">
+    <h2>📊 Timeline</h2>
+
+    <div class="timeline">
+      <div><b>2020</b> - Mulai belajar coding</div>
+      <div><b>2023</b> - Kolaborasi internasional</div>
+      <div><b>2025</b> - HADES TECH berdiri</div>
+      <div><b>2026</b> - Ekspansi sistem digital</div>
+    </div>
   </section>
 
-  <!-- 🌌 IMMERSIVE SECTION (HYBRID CORE) -->
+  <!-- VALUES -->
+  <section id="values" class="card">
+    <h2>🧠 Core Values</h2>
+    <ul>
+      <li>Innovation First</li>
+      <li>Security & Trust</li>
+      <li>Automation Driven</li>
+      <li>Partnership Growth</li>
+      <li>Scalability Focus</li>
+    </ul>
+  </section>
+
+  <!-- EXPERIENCE 3D -->
   <section id="experience" class="experience">
-    <h2>Immersive Experience</h2>
-    <p>Move your mouse — enter the digital space of HADES TECH.</p>
-    <div class="hint">3D WebGL Active</div>
+    <h2>🌌 Immersive Experience</h2>
+    <p>Move your mouse to interact with digital space</p>
+    <div class="hint">WebGL Active</div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact" class="card">
-    <h2>Contact</h2>
-    <p>Email: idnhadestech@gmail.com</p>
+    <h2>📬 Contact</h2>
+
+    <div class="cta">
+      <button onclick="window.location.href='mailto:hadestech@gmail.com'">
+        Email
+      </button>
+      <button onclick="alert('WhatsApp: +62XXXXXXXXXX')">
+        WhatsApp
+      </button>
+    </div>
   </section>
 
 </div>
 
 <script src="/script.js"></script>
 </body>
-</html>
+  </html>
