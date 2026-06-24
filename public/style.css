@@ -5,16 +5,19 @@
   box-sizing: border-box;
 }
 
-/* GLOBAL */
-html {
-  scroll-behavior: smooth;
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+  line-height: 1.6;
 }
 
-body {
-  font-family: sans-serif;
-  background: #000;
-  color: #fff;
-  overflow-x: hidden;
+/* CANVAS BG */
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 /* LOADER */
@@ -23,66 +26,161 @@ body {
   inset: 0;
   background: #000;
   z-index: 9999;
-  transition: opacity 0.4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* CANVAS BG */
-#bg {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-}
-
-/* SECTION */
-section {
-  padding: 100px 20px;
-}
-
-/* CARD / HERO / EXPERIENCE */
-.card,
-.hero,
-.experience {
+#loader.hide {
   opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.6s ease;
+  pointer-events: none;
+  transition: 0.5s;
 }
 
-/* SHOW (dipakai JS) */
-.show {
-  opacity: 1;
-  transform: translateY(0);
+.loader-content {
+  text-align: center;
 }
 
-/* NAV */
-nav a {
-  color: #aaa;
-  text-decoration: none;
+.loader-content .logo {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.loader-content .sub {
+  opacity: 0.7;
+  margin: 10px 0;
+}
+
+.loader-content .bar {
+  width: 200px;
+  height: 4px;
+  background: #333;
+  margin-top: 10px;
+}
+
+/* NAVBAR */
+#navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 15px 30px;
+  z-index: 1000;
   transition: 0.3s;
 }
 
-nav a.active {
-  color: #fff;
+#navbar.scrolled {
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
 }
 
-/* BUTTON */
-button {
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+}
+
+/* MENU TOGGLE */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
   cursor: pointer;
 }
 
-/* SCROLLBAR */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #444;
+/* CARD */
+.card {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 30px;
+  background: rgba(255,255,255,0.05);
   border-radius: 10px;
 }
 
-/* RESPONSIVE */
+/* VISION BOX */
+.vision-box,
+.mission-box {
+  margin-top: 20px;
+}
+
+/* TIMELINE */
+.timeline div {
+  margin: 10px 0;
+}
+
+/* CTA */
+.cta {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.cta button {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  background: #fff;
+  color: #000;
+  border-radius: 5px;
+}
+
+/* MOBILE */
 @media (max-width: 768px) {
-  section {
-    padding: 80px 15px;
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #000;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    padding: 20px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
   }
 }
+
+/* SCROLL ANIMATION */
+section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.6s;
+}
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+    }
