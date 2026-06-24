@@ -4,7 +4,7 @@ const app = express();
 
 app.use(express.json());
 
-q
+
 app.get("/api/company", (req, res) => {
   res.json({
     name: "HADES TECH",
