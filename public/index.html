@@ -1,74 +1,74 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HADES TECH</title>
+  <title>HADES TECH | Company Profile</title>
 
   <link rel="stylesheet" href="/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 </head>
 <body>
 
-<!-- LOADING SCREEN -->
-<div class="loader" id="loader">
-  <div class="loader-text">HADES TECH</div>
+<!-- 3D BACKGROUND -->
+<canvas id="bg"></canvas>
+
+<!-- UI -->
+<div class="ui">
+
+  <header class="nav">
+    <div class="logo">HADES TECH</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#vision">Vision</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>HADES TECH</h1>
+    <p>Digital Automation • PPOB • Software Engineering</p>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="card">
+    <h2>About Company</h2>
+    <p id="company">Loading data...</p>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="grid">
+    <div class="card">WhatsApp Automation System</div>
+    <div class="card">PPOB Digital Payment</div>
+    <div class="card">Custom Software Development</div>
+  </section>
+
+  <!-- VISION -->
+  <section id="vision" class="card">
+    <h2>Vision</h2>
+    <p>
+      Menjadi penyedia solusi teknologi dan layanan digital terintegrasi
+      yang cepat, aman, dan inovatif di Indonesia.
+    </p>
+  </section>
+
+  <!-- 🌌 IMMERSIVE SECTION (HYBRID CORE) -->
+  <section id="experience" class="experience">
+    <h2>Immersive Experience</h2>
+    <p>Move your mouse — enter the digital space of HADES TECH.</p>
+    <div class="hint">3D WebGL Active</div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="card">
+    <h2>Contact</h2>
+    <p>Email: idnhadestech@gmail.com</p>
+  </section>
+
 </div>
-
-<!-- NAV -->
-<header class="nav">
-  <div class="logo">HADES TECH</div>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#vision">Vision</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<!-- HERO -->
-<section class="hero parallax">
-  <div class="hero-content reveal">
-    <h1>Technology for the Future</h1>
-    <p>Automation • PPOB • Software Engineering</p>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="section reveal">
-  <h2>About HADES TECH</h2>
-  <div class="card" id="company">Loading...</div>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="section dark reveal">
-  <h2>Core Services</h2>
-
-  <div class="grid">
-    <div class="card tilt">WhatsApp Automation</div>
-    <div class="card tilt">PPOB System</div>
-    <div class="card tilt">Software Development</div>
-  </div>
-</section>
-
-<!-- VISION -->
-<section id="vision" class="section reveal">
-  <h2>Vision</h2>
-  <div class="card">
-    Menjadi perusahaan teknologi digital terdepan di Indonesia.
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section dark reveal">
-  <h2>Contact</h2>
-  <div class="card">
-    Email: idnhadestech@gmail.com
-  </div>
-</section>
-
-<footer>
-  © 2026 HADES TECH
-</footer>
 
 <script src="/script.js"></script>
 </body>
