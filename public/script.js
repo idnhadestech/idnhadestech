@@ -168,3 +168,55 @@ function smoothScroll() {
 }
 
 smoothScroll();
+
+// ======================
+// ACTIVE LINK ON SCROLL
+// ======================
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-links a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach((sec) => {
+    const top = window.scrollY;
+    const offset = sec.offsetTop - 120;
+    const height = sec.offsetHeight;
+
+    if (top >= offset && top < offset + height) {
+      current = sec.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach((link) => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#" + current) {
+      link.classList.add("active");
+    }
+  });
+});
+
+// ======================
+// NAVBAR SCROLL EFFECT
+// ======================
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) {
+    navbar.style.transform = "scale(0.95)";
+    navbar.style.opacity = "0.9";
+  } else {
+    navbar.style.transform = "scale(1)";
+    navbar.style.opacity = "1";
+  }
+});
+
+// ======================
+// MOBILE MENU
+// ======================
+const toggle = document.getElementById("menu-toggle");
+const links = document.querySelector(".nav-links");
+
+toggle.onclick = () => {
+  links.classList.toggle("show");
+};
