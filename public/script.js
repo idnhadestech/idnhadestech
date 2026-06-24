@@ -1,235 +1,123 @@
-// LOAD API
-fetch("/api/company")
-  .then(r => r.json())
-  .then(d => {
-    document.getElementById("company").innerHTML = `
-      <b>${d.name}</b><br/>
-      Founder: ${d.founder}<br/>
-      Founded: ${d.founded}<br/>
-      Location: ${d.location}
-    `;
-  });
-
-// THREE JS
-const scene = new THREE.Scene();
-
-const camera = new THREE.PerspectiveCamera(
-  75,
-  innerWidth / innerHeight,
-  0.1,
-  1000
-);
-
-camera.position.z = 5;
-
-const renderer = new THREE.WebGLRenderer({
-  canvas: document.getElementById("bg"),
-  alpha: true
-});
-
-renderer.setSize(innerWidth, innerHeight);
-
-// PARTICLES
-const geo = new THREE.BufferGeometry();
-const count = 2000;
-const pos = new Float32Array(count * 3);
-
-for (let i = 0; i < count * 3; i++) {
-  pos[i] = (Math.random() - 0.5) * 10;
-}
-
-geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
-
-const mat = new THREE.PointsMaterial({
-  size: 0.015,
-  color: 0x6ea8ff
-});
-
-const points = new THREE.Points(geo, mat);
-scene.add(points);
-
-// ANIMATE
-function animate() {
-  requestAnimationFrame(animate);
-
-  points.rotation.y += 0.0005;
-  points.rotation.x += 0.0002;
-
-  renderer.render(scene, camera);
-}
-
-animate();
-
-// MOUSE PARALLAX
-window.addEventListener("mousemove", (e) => {
-  const x = (e.clientX / innerWidth - 0.5) * 2;
-  const y = (e.clientY / innerHeight - 0.5) * 2;
-
-  camera.position.x = x * 0.4;
-  camera.position.y = -y * 0.4;
-});
-
-// RESIZE
-window.addEventListener("resize", () => {
-  renderer.setSize(innerWidth, innerHeight);
-});
-
-// ======================
-// SCROLL REVEAL SYSTEM
-// ======================
-const revealElements = document.querySelectorAll(
-  ".card, .hero, .experience"
-);
-
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("active");
-      }
-    });
-  },
-  {
-    threshold: 0.15
-  }
-);
-
-revealElements.forEach((el) => {
-  el.classList.add("reveal");
-  observer.observe(el);
-});
-
-// ======================
-// LOADER CONTROL
-// ======================
+// ===== LOADER =====
 const loader = document.getElementById("loader");
 
-let loaded = false;
-
-// jika DOM ready
-document.addEventListener("DOMContentLoaded", () => {
-  loaded = true;
-  hideLoader();
-});
-
-// fallback max 1 detik
-setTimeout(() => {
-  if (!loaded) hideLoader();
-}, 1000);
-
 function hideLoader() {
-  loader.classList.add("hide");
+  if (!loader) return;
+  loader.style.opacity = "0";
+  setTimeout(() => (loader.style.display = "none"), 300);
 }
 
-// ======================
-// APPLE SCROLL CINEMATIC SYSTEM
-// ======================
+setTimeout(hideLoader, 500);
 
-// smooth scroll depth tracking
-let scrollYPos = 0;
+// ===== FETCH API =====
+fetch("/api/company")
+  .then((res) => res.json())
+  .then((data) => {
+    const el = document.getElementById("company");
+    if (!el) return;
 
-window.addEventListener("scroll", () => {
-  scrollYPos = window.scrollY;
+    el.innerHTML = `
+      <b>${data.name}</b><br/>
+      Founder: ${data.founder}<br/>
+      Founded: ${data.founded}<br/>
+      Location: ${data.location}
+    `;
+  })
+  .catch(() => {
+    const el = document.getElementById("company");
+    if (el) el.innerText = "Failed load data";
+  });
 
-  // 3D camera depth shift (Apple feel)
-  camera.position.z = 5 + scrollYPos * 0.002;
+// ===== SCROLL REVEAL =====
+const revealEls = document.querySelectorAll(".card, .hero, .experience");
 
-  // background slow parallax
-  points.rotation.y += 0.0002;
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (e.isIntersecting) e.target.classList.add("show");
+  });
 });
 
-// ======================
-// BLUR → SHARP SCROLL EFFECT
-// ======================
-const sections = document.querySelectorAll(".card, .hero, .experience");
+revealEls.forEach((el) => observer.observe(el));
 
-const blurObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.style.filter = "blur(0px)";
-        entry.target.style.transform = "translateY(0px) scale(1)";
-        entry.target.style.opacity = "1";
-      } else {
-        entry.target.style.filter = "blur(6px)";
-        entry.target.style.transform = "translateY(20px) scale(0.98)";
-        entry.target.style.opacity = "0.6";
-      }
-    });
-  },
-  { threshold: 0.2 }
-);
-
-sections.forEach((el) => {
-  el.style.transition = "all 0.8s ease";
-  blurObserver.observe(el);
-});
-
-// ======================
-// SCROLL MOMENTUM FEEL (SMOOTH DRIFT)
-// ======================
-let targetY = 0;
-let currentY = 0;
-
-function smoothScroll() {
-  targetY = window.scrollY;
-  currentY += (targetY - currentY) * 0.08;
-
-  document.body.style.transform = `translateY(${-currentY * 0.02}px)`;
-
-  requestAnimationFrame(smoothScroll);
-}
-
-smoothScroll();
-
-// ======================
-// ACTIVE LINK ON SCROLL
-// ======================
+// ===== NAV ACTIVE =====
 const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll(".nav-links a");
+const navLinks = document.querySelectorAll("nav a");
 
 window.addEventListener("scroll", () => {
   let current = "";
 
   sections.forEach((sec) => {
-    const top = window.scrollY;
-    const offset = sec.offsetTop - 120;
+    const offset = sec.offsetTop - 200;
     const height = sec.offsetHeight;
 
-    if (top >= offset && top < offset + height) {
-      current = sec.getAttribute("id");
+    if (scrollY >= offset && scrollY < offset + height) {
+      current = sec.id;
     }
   });
 
-  navLinks.forEach((link) => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + current) {
-      link.classList.add("active");
+  navLinks.forEach((a) => {
+    a.classList.remove("active");
+    if (a.getAttribute("href") === "#" + current) {
+      a.classList.add("active");
     }
   });
 });
 
-// ======================
-// NAVBAR SCROLL EFFECT
-// ======================
-const navbar = document.getElementById("navbar");
+// ===== THREE JS =====
+const canvas = document.getElementById("bg");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
-    navbar.style.transform = "scale(0.95)";
-    navbar.style.opacity = "0.9";
-  } else {
-    navbar.style.transform = "scale(1)";
-    navbar.style.opacity = "1";
+if (canvas && window.THREE) {
+  const scene = new THREE.Scene();
+
+  const camera = new THREE.PerspectiveCamera(
+    75,
+    innerWidth / innerHeight,
+    0.1,
+    1000
+  );
+
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    alpha: true
+  });
+
+  renderer.setSize(innerWidth, innerHeight);
+
+  const geometry = new THREE.BufferGeometry();
+
+  const count = innerWidth < 768 ? 800 : 2000;
+  const positions = new Float32Array(count * 3);
+
+  for (let i = 0; i < count * 3; i++) {
+    positions[i] = (Math.random() - 0.5) * 10;
   }
-});
 
-// ======================
-// MOBILE MENU
-// ======================
-const toggle = document.getElementById("menu-toggle");
-const links = document.querySelector(".nav-links");
+  geometry.setAttribute(
+    "position",
+    new THREE.BufferAttribute(positions, 3)
+  );
 
-toggle.onclick = () => {
-  links.classList.toggle("show");
-};
+  const material = new THREE.PointsMaterial({ size: 0.02 });
+
+  const particles = new THREE.Points(geometry, material);
+  scene.add(particles);
+
+  camera.position.z = 3;
+
+  function animate() {
+    requestAnimationFrame(animate);
+
+    particles.rotation.y += 0.0008;
+    particles.rotation.x += 0.0003;
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  window.addEventListener("resize", () => {
+    renderer.setSize(innerWidth, innerHeight);
+    camera.aspect = innerWidth / innerHeight;
+    camera.updateProjectionMatrix();
+  });
+}
