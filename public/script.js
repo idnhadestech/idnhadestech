@@ -73,3 +73,28 @@ window.addEventListener("mousemove", (e) => {
 window.addEventListener("resize", () => {
   renderer.setSize(innerWidth, innerHeight);
 });
+
+// ======================
+// SCROLL REVEAL SYSTEM
+// ======================
+const revealElements = document.querySelectorAll(
+  ".card, .hero, .experience"
+);
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+      }
+    });
+  },
+  {
+    threshold: 0.15
+  }
+);
+
+revealElements.forEach((el) => {
+  el.classList.add("reveal");
+  observer.observe(el);
+});
