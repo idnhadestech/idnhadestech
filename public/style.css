@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   background: #0b0f14;
   color: white;
 }
@@ -10,6 +10,7 @@ header {
   justify-content: space-between;
   padding: 20px;
   background: #111827;
+  align-items: center;
 }
 
 nav a {
@@ -18,23 +19,33 @@ nav a {
   text-decoration: none;
 }
 
+nav a:hover {
+  color: white;
+}
+
 .hero {
   text-align: center;
   padding: 80px 20px;
+  background: linear-gradient(#000, #0b0f14);
 }
 
 section {
-  padding: 40px;
+  padding: 40px 20px;
+  text-align: center;
 }
 
 button {
   padding: 10px 15px;
   background: #22c55e;
   border: none;
+  color: white;
   cursor: pointer;
+  border-radius: 6px;
 }
 
 pre {
   background: #111;
   padding: 10px;
+  margin-top: 10px;
+  overflow: auto;
 }
