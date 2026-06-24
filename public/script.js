@@ -1,17 +1,13 @@
 async function loadCompany() {
-  try {
-    const res = await fetch("/api/company");
-    const data = await res.json();
+  const res = await fetch("/api/company");
+  const data = await res.json();
 
-    document.getElementById("company").innerHTML = `
-      <p><b>Name:</b> ${data.name}</p>
-      <p><b>Founded:</b> ${data.founded}</p>
-      <p><b>Founder:</b> ${data.founder}</p>
-      <p><b>Location:</b> ${data.location}</p>
-    `;
-  } catch (err) {
-    console.log("API error:", err);
-  }
+  document.getElementById("company").innerHTML = `
+    <h3>${data.name}</h3>
+    <p>Founded: ${data.founded}</p>
+    <p>Founder: ${data.founder}</p>
+    <p>Location: ${data.location}</p>
+  `;
 }
 
 async function testAPI() {
