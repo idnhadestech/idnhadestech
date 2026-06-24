@@ -9,103 +9,67 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
+<!-- LOADING SCREEN -->
+<div class="loader" id="loader">
+  <div class="loader-text">HADES TECH</div>
+</div>
+
+<!-- NAV -->
 <header class="nav">
   <div class="logo">HADES TECH</div>
-
   <nav>
     <a href="#about">About</a>
     <a href="#services">Services</a>
-    <a href="#api">API</a>
+    <a href="#vision">Vision</a>
     <a href="#contact">Contact</a>
   </nav>
-
-  <button class="cta-small">Start</button>
 </header>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="badge">⚡ Automation • PPOB • Software</div>
-
-  <h1>
-    Digital Infrastructure<br/>
-    for Modern Business
-  </h1>
-
-  <p>
-    WhatsApp Automation, PPOB System, and Custom Software Development
-    built for speed, scale, and reliability.
-  </p>
-
-  <div class="hero-actions">
-    <button class="btn primary">Get Started</button>
-    <button class="btn ghost">View API</button>
+<section class="hero parallax">
+  <div class="hero-content reveal">
+    <h1>Technology for the Future</h1>
+    <p>Automation • PPOB • Software Engineering</p>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="section">
-  <div class="container">
-    <h2>About HADES TECH</h2>
-    <p class="sub">
-      Company profile loading from API...
-    </p>
-
-    <div id="company" class="card glass"></div>
-  </div>
+<section id="about" class="section reveal">
+  <h2>About HADES TECH</h2>
+  <div class="card" id="company">Loading...</div>
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="section dark">
-  <div class="container">
-    <h2>Services</h2>
+<section id="services" class="section dark reveal">
+  <h2>Core Services</h2>
 
-    <div class="grid">
-      <div class="card">
-        <h3>WhatsApp Automation</h3>
-        <p>24/7 bot system for business automation.</p>
-      </div>
-
-      <div class="card">
-        <h3>PPOB System</h3>
-        <p>Digital payment infrastructure & transaction engine.</p>
-      </div>
-
-      <div class="card">
-        <h3>Software Development</h3>
-        <p>Custom backend, API, and scalable systems.</p>
-      </div>
-    </div>
+  <div class="grid">
+    <div class="card tilt">WhatsApp Automation</div>
+    <div class="card tilt">PPOB System</div>
+    <div class="card tilt">Software Development</div>
   </div>
 </section>
 
-<!-- API -->
-<section id="api" class="section">
-  <div class="container">
-    <h2>Developer API</h2>
-
-    <button class="btn primary" onclick="testAPI()">
-      Test API
-    </button>
-
-    <pre id="api-result" class="code"></pre>
+<!-- VISION -->
+<section id="vision" class="section reveal">
+  <h2>Vision</h2>
+  <div class="card">
+    Menjadi perusahaan teknologi digital terdepan di Indonesia.
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="section dark">
-  <div class="container center">
-    <h2>Build Something Powerful</h2>
-    <p>Let’s build your automation system with HADES TECH.</p>
-
-    <button class="btn primary">Contact Us</button>
+<section id="contact" class="section dark reveal">
+  <h2>Contact</h2>
+  <div class="card">
+    Email: hadestech@gmail.com
   </div>
 </section>
 
 <footer>
-  © 2026 HADES TECH. All rights reserved.
+  © 2026 HADES TECH
 </footer>
 
 <script src="/script.js"></script>
 </body>
-    </html>
+  </html>
